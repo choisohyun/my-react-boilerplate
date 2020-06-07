@@ -1,12 +1,12 @@
 const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const merge = require("webpack-merge");
+const common = require("./webpack.common.js");
 
-module.exports = {
+module.exports = merge(common, {
   mode: "development",
 
-  entry: "./src/index.tsx",
+  devtool: "cheap-module-source-map",
 
   devServer: {
     historyApiFallback: true,
@@ -16,30 +16,9 @@ module.exports = {
     publicPath: "/",
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: ["babel-loader", "ts-loader"],
-      },
-    ],
-  },
-
-  resolve: {
-    extensions: [".js", "jsx", ".ts", ".tsx"],
-    alias: {
-      "@": path.resolve(__dirname, "src/"),
-    },
-  },
-
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: "public/index.html",
-    }),
     new Dotenv({
       path: path.resolve(__dirname, "./.env.development"),
     }),
   ],
-};
+});

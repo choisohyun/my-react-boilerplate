@@ -3,7 +3,7 @@
     /* Basic Options */
     "target": "esnext",
     "module": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -13,8 +13,19 @@
 
     /* Module Resolution Options */
     "moduleResolution": "node",
-    "baseUrl": "./",
-    "esModuleInterop": true
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "types": ["node"],
+    "typeRoots": ["./node_modules/@types"],
+
+    "paths": {
+      "@/*": ["src/*"],
+      "@Main/*": ["src/components/Main/*"],
+      "@CalendarModal/*": ["src/components/CalendarModal/*"],
+      "@PriceModal/*": ["src/components/PriceModal/*"],
+      "@GuestCountModal/*": ["src/components/GuestCountModal/*"],
+      "@ReservationModal/*": ["src/components/ReservationModal/*"]
+    }
   },
-  "exclude": ["**/*.test.*", "**/*.spec.*", "node_modules", "dist", "public"]
+  "exclude": ["node_modules", "dist", "public"]
 }
