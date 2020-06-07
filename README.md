@@ -9,3 +9,12 @@
 - tsx or jsx
 - babel
 - dotenv
+
+## 사용 방법
+
+```
+git clone https://github.com/choisohyun/my-react-boilerplate.git
+npm install
+npm start
+npm run build
+```
