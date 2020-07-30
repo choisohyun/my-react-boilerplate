@@ -13,6 +13,7 @@ module.exports = merge(common, {
     inline: true,
     port: 3000,
     hot: true,
+    open: true,
     publicPath: "/",
   },
 

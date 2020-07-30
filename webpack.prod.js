@@ -7,8 +7,10 @@ module.exports = merge(common, {
   mode: "production",
 
   output: {
-    filename: "bundle.js",
+    filename: "[name].[hash].js",
+    chunkFilename: "[name].[hash].bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
 
   optimization: {
@@ -18,10 +20,13 @@ module.exports = merge(common, {
           test: /[\\/]node_modules[\\/]/,
           name: "vendors",
           chunks: "all",
+          minSize: 10000,
+          maxSize: 250000,
         },
       },
     },
   },
+
   performance: {
     hints: false,
     maxEntrypointSize: 512000,

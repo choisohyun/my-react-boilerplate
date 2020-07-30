@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -9,10 +10,6 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        test: /\.tsx?$/,
-        use: ["babel-loader", "ts-loader"],
-      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -32,7 +29,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".js", ".jsx"],
     alias: {
       "@": path.resolve(__dirname, "src/"),
       "@Main": path.resolve(__dirname, "src/components/Main/"),
@@ -45,5 +42,6 @@ module.exports = {
       filename: "index.html",
       template: "public/index.html",
     }),
+    new CleanWebpackPlugin(),
   ],
 };
