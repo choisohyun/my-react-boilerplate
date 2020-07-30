@@ -6,7 +6,6 @@
 - redux
 - styled component
 - axios
-- tsx or jsx
 - babel
 - dotenv
 
