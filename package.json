@@ -1,6 +1,6 @@
 {
   "name": "my-react-boilerplate",
-  "version": "1.0.40",
+  "version": "1.0.41",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --env=dev",
@@ -51,7 +51,6 @@
     "react-helmet": "^6.1.0",
     "sass": "1.43.5",
     "sass-loader": "12.3.0",
-    "standard-version": "^9.3.2",
     "style-loader": "3.3.1",
     "ts-jest": "27.0.7",
     "typescript": "^4.5.2",
