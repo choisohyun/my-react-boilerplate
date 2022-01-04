@@ -1,16 +1,18 @@
-const path = require("path");
-const Dotenv = require("dotenv-webpack");
-const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 module.exports = merge(common, {
-  mode: "production",
+  mode: 'production',
 
   output: {
-    filename: "[name].[hash].js",
-    chunkFilename: "[name].[hash].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "/",
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
 
   optimization: {
@@ -18,13 +20,20 @@ module.exports = merge(common, {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
+          name: 'vendors',
+          chunks: 'all',
           minSize: 10000,
           maxSize: 250000,
         },
       },
     },
+    minimizer: [
+      new ESBuildMinifyPlugin({
+        target: 'esnext',
+        css: true,
+        loader: 'tsx',
+      }),
+    ],
   },
 
   performance: {
@@ -35,7 +44,16 @@ module.exports = merge(common, {
 
   plugins: [
     new Dotenv({
-      path: path.resolve(__dirname, "./.env.production"),
+      path: path.resolve(__dirname, './.env.production'),
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'public/index.html',
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        hash: true,
+      },
     }),
   ],
 });

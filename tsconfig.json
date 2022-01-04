@@ -1,31 +1,49 @@
 {
   "compilerOptions": {
-    /* Basic Options */
+    /* Language and Environment */
     "target": "esnext",
-    "module": "esnext",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
     "jsx": "react",
+    "experimentalDecorators": true,
 
-    /* Strict Type-Checking Options */
+    /* Modules */
+    "module": "ES6",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "types": ["node", "jest"],
+    "typeRoots": ["./node_modules/@types"],
+
+    /* Emit */
+    "sourceMap": true,
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+
+    /* Type Checking */
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "noImplicitThis": false,
 
-    /* Module Resolution Options */
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "types": ["node"],
-    "typeRoots": ["./node_modules/@types"],
-
-    "paths": {
-      "@/*": ["src/*"],
-      "@Main/*": ["src/components/Main/*"],
-      "@CalendarModal/*": ["src/components/CalendarModal/*"],
-      "@PriceModal/*": ["src/components/PriceModal/*"],
-      "@GuestCountModal/*": ["src/components/GuestCountModal/*"],
-      "@ReservationModal/*": ["src/components/ReservationModal/*"]
-    }
+    /* Completeness */
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "public"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

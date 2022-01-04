@@ -1,25 +1,25 @@
-const path = require("path");
-const Dotenv = require("dotenv-webpack");
-const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = merge(common, {
-  mode: "development",
+module.exports = merge(
+  {
+    mode: 'development',
 
-  devtool: "cheap-module-source-map",
+    devtool: 'cheap-module-source-map',
 
-  devServer: {
-    historyApiFallback: true,
-    inline: true,
-    port: 3000,
-    hot: true,
-    open: true,
-    publicPath: "/",
+    devServer: {
+      port: 8081,
+      historyApiFallback: true,
+      hot: true,
+    },
+
+    plugins: [
+      new Dotenv({
+        path: path.resolve(__dirname, './.env.development'),
+      }),
+    ],
   },
-
-  plugins: [
-    new Dotenv({
-      path: path.resolve(__dirname, "./.env.development"),
-    }),
-  ],
-});
+  common,
+);

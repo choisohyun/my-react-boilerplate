@@ -8,6 +8,7 @@
 - axios
 - babel
 - dotenv
+- webpack + esbuild-loader
 
 ## 사용 방법
 
