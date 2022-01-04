@@ -1,6 +1,6 @@
 {
   "name": "my-react-boilerplate",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --env=dev",
