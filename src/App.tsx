@@ -1,12 +1,14 @@
-import React from 'react';
-import Main from './main/Main';
+import React, { Suspense } from 'react';
+import routes from '@/routes/index';
+import { useRoutes } from 'react-router-dom';
 
 const App = () => {
+  const element = useRoutes(routes);
+  console.log(element);
+
   return (
     <>
-      <div>Hello React!</div>
-      <h1>{process.env.TEST}</h1>
-      <Main />
+      <Suspense fallback={<div>Loading...</div>}>{element}</Suspense>
     </>
   );
 };
